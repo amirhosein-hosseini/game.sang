@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+<meta charset="utf-8">
+<merta name="viewprt" content="width = device-width, initial-scale=1.0"></merta>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-rtl.css">
+<link rel="stylesheet" type="text/css" href="css/slick-theme.css">
+<link rel="stylesheet" type="text/css" href="css/slick.css">
+<link rel="stylesheet" type="text/css" href="css/hover-min.css">
+<link rel="stylesheet" type="text/css" hrer="css/all.min.css">
+<link href="style.css" rel="stylesheet" type="text/css">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>	  
+  <script src="https://kit.fontawesome.com/dcc0def279.js" crossorigin="anonymous"></script>
+
+<title>My-Resume</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="text-white text-center text">ENTER YOUR CHOISE</h1>
+    <div class="justify-content-between d-flex" style="margin-top: 50px;">
+      <div class="computer">
+        <h2 class="text-white">COMPUTER</h2>
+        <h2 class="text-white text-center computerp">0</h3>
+      </div>
+      <div class="you">
+        <h2 class="text-white">YOU</h2>
+        <h2 class="text-white text-center yourp">0</h3>
+      </div>
+
+    </div>
+    <div class="choses text-center justify-content-between d-flex" id="choses">
+      <i class="fa-solid fa-hand-back-fist" onclick="sang('sang')"></i>
+      <i class="fa-solid fa-hand" onclick="kaghaz('kaghaz')"></i>
+      <i class="fa-solid fa-hand-scissors" onclick="gheichi('gheichi')"></i>
+    </div>
+    <div class="after-chose text-center justify-content-between d-flex" style="margin-top: 150px;">
+      <i class="fa-solid fa-hand-back-fist sang active2" style="font-size: 80px;cursor: pointer;"></i>
+      <i class="fa-solid fa-hand-back-fist sang2 active2" style="font-size: 80px;cursor: pointer;"></i>
+
+      <i class="fa-solid fa-hand kaghaz active2" style="font-size: 80px;cursor: pointer;"></i>
+      <i class="fa-solid fa-hand kaghaz2 active2" style="font-size: 80px;cursor: pointer;"></i>
+
+      <i class="fa-solid fa-hand-scissors gheichi active2" style="font-size: 80px;cursor: pointer;"></i>
+      <i class="fa-solid fa-hand-scissors gheichi2 active2" style="font-size: 80px;cursor: pointer;"></i>
+
+    </div>
+  <script>
+    const sang2 = document.getElementsByClassName('sang')[0];
+    const kaghaz2 = document.getElementsByClassName('kaghaz')[0];
+    const gheichi2 = document.getElementsByClassName('gheichi')[0];
+
+    var you;
+    var computer = 0;
+    var choi = ['sang','kaghaz','gheichi']
+    var your = 0;
+
+    const game = function(a,b){
+      if (a === b){
+        document.getElementsByClassName('text')[0].innerHTML = "EQUAL";
+        document.getElementsByClassName(a + 2)[0].classList.remove("active2")
+        setTimeout(() => {
+          document.getElementsByClassName(a + 2)[0].classList.add("active2")
+        }, 1000);
+      }
+      else if (a === "sang" && b === "kaghaz"){
+        document.getElementsByClassName('text')[0].innerHTML = "YOU LOSE";
+        computer ++;
+        document.getElementsByClassName('computerp')[0].innerHTML = computer;
+      }
+      else if (a === "sang" && b === "gheichi"){
+        document.getElementsByClassName('text')[0].innerHTML = "YOU WIN";
+        your ++;
+        document.getElementsByClassName('yourp')[0].innerHTML = your;
+      }
+      else if (a === "kaghaz" && b === "sang"){
+        document.getElementsByClassName('text')[0].innerHTML = "YOU WIN";
+        your ++;
+        document.getElementsByClassName('yourp')[0].innerHTML = your;
+      }
+      else if (a === "kaghaz" && b === "gheichi"){
+        document.getElementsByClassName('text')[0].innerHTML = "YOU LOSE";
+        computer ++;
+        document.getElementsByClassName('computerp')[0].innerHTML = computer;
+      }
+      else if (a === "gheichi" && b === "sang"){
+        document.getElementsByClassName('text')[0].innerHTML = "YOU LOSE";
+        computer ++;
+        document.getElementsByClassName('computerp')[0].innerHTML = computer;
+      }
+      else if (a === "gheichi" && b === "kaghaz"){
+        document.getElementsByClassName('text')[0].innerHTML = "YOU WIN";
+        your ++;
+        document.getElementsByClassName('yourp')[0].innerHTML = your;
+      }
+    }
+
+
+    
+    const sang = function(name){
+      computerchoi = choi[Math.floor(Math.random()*choi.length)]
+      document.getElementsByClassName(computerchoi)[0].classList.remove("active2")
+      sang2.classList.remove("active2")
+      you = "sang";
+      game(you,computerchoi);
+      setTimeout(() => {
+        document.getElementsByClassName(computerchoi)[0].classList.add("active2");
+        document.getElementsByClassName('text')[0].innerHTML = "ENTER YOUR CHOISE";
+        sang2.classList.add("active2");
+      }, 1000);
+    }
+    const kaghaz = function(name){
+      var computerchoi = choi[Math.floor(Math.random()*choi.length)];
+      document.getElementsByClassName(computerchoi)[0].classList.remove("active2")
+      kaghaz2.classList.remove("active2")
+      you = "kaghaz";
+      game(you,computerchoi);
+      setTimeout(() => {
+        document.getElementsByClassName(computerchoi)[0].classList.add("active2");
+        document.getElementsByClassName('text')[0].innerHTML = "ENTER YOUR CHOISE";
+        kaghaz2.classList.add("active2");
+      }, 1000);
+    }
+    const gheichi = function(name){
+      var computerchoi = choi[Math.floor(Math.random()*choi.length)];
+      document.getElementsByClassName(computerchoi)[0].classList.remove("active2")
+      gheichi2.classList.remove("active2")
+      you = "gheichi"
+      game(you,computerchoi);
+      setTimeout(() => {
+        document.getElementsByClassName(computerchoi)[0].classList.add("active2");
+        document.getElementsByClassName('text')[0].innerHTML = "ENTER YOUR CHOISE";
+        gheichi2.classList.add("active2");
+      }, 1000);
+    }
+
+
+  </script>
+</body>
+<script type="text/javascript" src="particles.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<script src="js/all.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/slick.min.js"></script>
+<script src="js/myscripts.js"></script>
+<script src="js/popper.min.js"></script>
+</html>
+
+							  
+							  
+							  
+							  
+							  
